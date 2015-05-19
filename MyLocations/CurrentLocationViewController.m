@@ -31,6 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self updateLabels];
+    [self configureGetButton];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -39,8 +40,15 @@
     // Dispose of any resources that can be recreated.
 }
 -(IBAction)getLocaton:(id)sender{
-    [self startLocaltionManager];
+    if (_updatingLocation) {
+        [self stopLocationManager];
+    }else{
+        _location = nil;
+        _lastLocationError = nil;
+        [self startLocaltionManager];
+    }
     [self updateLabels];
+    [self configureGetButton];
 }
 #pragma mark -CLLocationManagerDelegate
 
@@ -52,14 +60,32 @@
     [self stopLocationManager];
     _lastLocationError = error;
     [self updateLabels];
+    [self configureGetButton];
 }
 
 -(void)locationManager:(CLLocationManager*)manager didUpdateLocations:(NSArray *)locations{
     CLLocation *newLocation = [locations lastObject];
     NSLog(@"已更新坐标，当前位置是:%@",newLocation);
-    _lastLocationError = nil;
-    _location = newLocation;
-    [self updateLabels];
+    //[self updateLabels];
+    if ([newLocation.timestamp timeIntervalSinceNow]<-5.0) {
+        return;
+    }
+    if (newLocation.horizontalAccuracy<0) {
+        return;
+    }
+    
+    if (_location == nil||_location.horizontalAccuracy>newLocation.horizontalAccuracy) {
+        _lastLocationError = nil;
+        _location = newLocation;
+        [self updateLabels];
+        if (newLocation.horizontalAccuracy<=_locationManager.desiredAccuracy) {
+            NSLog(@"目标定位完成");
+            //[self updateLabels];
+            [self stopLocationManager];
+            [self configureGetButton];
+        }
+    }
+
 }
 
 -(void)updateLabels{
@@ -110,4 +136,11 @@
     }
 }
 
+-(void)configureGetButton{
+    if(_updatingLocation){
+        [self.getButton setTitle:@"停止定位" forState:UIControlStateNormal];
+    }else{
+        [self.getButton setTitle:@"获取当前位置" forState:UIControlStateNormal];
+    }
+}
 @end
