@@ -20,10 +20,15 @@
     CLLocation *_location;
     BOOL _updatingLocation;
     NSError *_lastLocationError;
+    CLGeocoder *_geocoder;
+    CLPlacemark *_placemark;
+    BOOL _performingReverseGeocoding;
+    NSError *_lastGeocodingError;
 }
 -(id)initWithCoder:(NSCoder *)aDecoder{
     if((self = [super initWithCoder:aDecoder])){
         _locationManager = [[CLLocationManager alloc]init];
+        _geocoder = [[CLGeocoder alloc]init];
     }
     return self;
 }
@@ -45,6 +50,8 @@
     }else{
         _location = nil;
         _lastLocationError = nil;
+        _placemark = nil;
+        _lastGeocodingError = nil;
         [self startLocaltionManager];
     }
     [self updateLabels];
@@ -84,6 +91,21 @@
             [self stopLocationManager];
             [self configureGetButton];
         }
+        if (!_performingReverseGeocoding) {
+            NSLog(@"*** Going to geocode");
+            _performingReverseGeocoding = YES;
+            [_geocoder reverseGeocodeLocation:_location completionHandler:^(NSArray *placemarks,NSError *error){
+                NSLog(@"found placemarks:%@,error:%@",placemarks,error);
+                _lastGeocodingError = error;
+                if (error == nil && [placemarks count]>0){
+                    _placemark = [placemarks lastObject];
+                }else{
+                    _placemark = nil;
+                }
+                _performingReverseGeocoding = NO;
+                [self updateLabels];
+            }];
+        }
     }
 
 }
@@ -94,6 +116,15 @@
         self.longtitudeLabel.text = [NSString stringWithFormat:@"%.8f",_location.coordinate.longitude];
         self.tagButton.hidden = NO;
         self.messageLabel.text = @"";
+        if (_placemark !=nil) {
+            self.adderessLabel.text = [self stringFromPlacemark:_placemark];
+        }else if(_performingReverseGeocoding){
+            self.adderessLabel.text = @"寻找中...";
+        }else if(_lastGeocodingError!=nil){
+            self.adderessLabel.text = @"出错了";
+        }else{
+            self.adderessLabel.text = @"啥都没找到";
+        }
     }else{
         self.latitudeLabel.text = @"";
         self.longtitudeLabel.text = @"";
@@ -142,5 +173,9 @@
     }else{
         [self.getButton setTitle:@"获取当前位置" forState:UIControlStateNormal];
     }
+}
+
+-(NSString*)stringFromPlacemark:(CLPlacemark*)thePlacemark{
+    return [NSString stringWithFormat:@"%@ %@\n%@ %@ %@",thePlacemark.subThoroughfare,thePlacemark.thoroughfare,thePlacemark.locality,thePlacemark.administrativeArea,thePlacemark.postalCode];
 }
 @end
