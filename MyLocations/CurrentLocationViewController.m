@@ -80,6 +80,10 @@
     if (newLocation.horizontalAccuracy<0) {
         return;
     }
+    CLLocationDistance distance =MAXFLOAT;
+    if (_location !=nil) {
+        distance = [newLocation distanceFromLocation:_location];
+    }
     
     if (_location == nil||_location.horizontalAccuracy>newLocation.horizontalAccuracy) {
         _lastLocationError = nil;
@@ -90,6 +94,9 @@
             //[self updateLabels];
             [self stopLocationManager];
             [self configureGetButton];
+        }
+        if (distance >0) {
+            _performingReverseGeocoding = NO;
         }
         if (!_performingReverseGeocoding) {
             NSLog(@"*** Going to geocode");
@@ -105,6 +112,15 @@
                 _performingReverseGeocoding = NO;
                 [self updateLabels];
             }];
+        }
+    
+    }else if (distance <1.0){
+        NSTimeInterval timeInterval = [newLocation.timestamp timeIntervalSinceDate:_location.timestamp];
+        if (timeInterval >10) {
+            NSLog(@"***强制完成");
+            [self stopLocationManager];
+            [self updateLabels];
+            [self configureGetButton];
         }
     }
 
@@ -152,6 +168,7 @@
 
 -(void)stopLocationManager{
     if(_updatingLocation){
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(didTimeOut:) object:nil];
         [_locationManager stopUpdatingLocation];
         _locationManager.delegate = nil;
         _updatingLocation = NO;
@@ -164,6 +181,7 @@
         _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
         [_locationManager startUpdatingLocation];
         _updatingLocation = YES;
+        [self performSelector:@selector(didTimeOut:) withObject:nil afterDelay:60];
     }
 }
 
@@ -176,6 +194,16 @@
 }
 
 -(NSString*)stringFromPlacemark:(CLPlacemark*)thePlacemark{
-    return [NSString stringWithFormat:@"%@ %@\n%@ %@ %@",thePlacemark.subThoroughfare,thePlacemark.thoroughfare,thePlacemark.locality,thePlacemark.administrativeArea,thePlacemark.postalCode];
+    return [NSString stringWithFormat:@"%@ %@ %@ %@ %@",thePlacemark.administrativeArea,thePlacemark.locality,thePlacemark.thoroughfare,thePlacemark.subThoroughfare,thePlacemark.postalCode];
+}
+
+-(void)didTimeOut:(id)obj{
+    NSLog(@"*** oops，超时了");
+    if (_location == nil) {
+        [self stopLocationManager];
+        _lastLocationError = [NSError errorWithDomain:@"MyLocationsErrorDomain" code:1 userInfo:nil];
+        [self updateLabels];
+        [self configureGetButton];
+    }
 }
 @end
