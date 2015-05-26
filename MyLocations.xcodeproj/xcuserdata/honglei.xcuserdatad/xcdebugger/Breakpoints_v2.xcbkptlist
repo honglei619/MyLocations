@@ -106,11 +106,11 @@
                   moduleName = "MyLocations"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/honglei/GIT/MyLocations/MyLocations/CurrentLocationViewController.m"
-                  timestampString = "453827831.488977"
+                  timestampString = "454347073.436127"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "117"
-                  endingLineNumber = "117"
+                  startingLineNumber = "126"
+                  endingLineNumber = "126"
                   offsetFromSymbolStart = "1058">
                </Location>
                <Location
@@ -121,11 +121,11 @@
                   moduleName = "MyLocations"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/honglei/GIT/MyLocations/MyLocations/CurrentLocationViewController.m"
-                  timestampString = "453827831.489124"
+                  timestampString = "454347073.436281"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "117"
-                  endingLineNumber = "117"
+                  startingLineNumber = "126"
+                  endingLineNumber = "126"
                   offsetFromSymbolStart = "1076">
                </Location>
             </Locations>

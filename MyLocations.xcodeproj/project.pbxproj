@@ -17,6 +17,7 @@
 		4BC2BDBF1B08FB5300512C26 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BC2BDBD1B08FB5300512C26 /* LaunchScreen.xib */; };
 		4BC2BDCB1B08FB5300512C26 /* MyLocationsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC2BDCA1B08FB5300512C26 /* MyLocationsTests.m */; };
 		4BC2BDD51B09071600512C26 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC2BDD41B09071600512C26 /* CoreLocation.framework */; };
+		4BDA1AA81B14C2370030982E /* CategoryPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDA1AA71B14C2370030982E /* CategoryPickerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,8 @@
 		4BC2BDC91B08FB5300512C26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BC2BDCA1B08FB5300512C26 /* MyLocationsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyLocationsTests.m; sourceTree = "<group>"; };
 		4BC2BDD41B09071600512C26 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		4BDA1AA61B14C2370030982E /* CategoryPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryPickerViewController.h; sourceTree = "<group>"; };
+		4BDA1AA71B14C2370030982E /* CategoryPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryPickerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +100,8 @@
 				4BC2BDB31B08FB5300512C26 /* CurrentLocationViewController.m */,
 				4B0B3B731B0E351800B2C26D /* LocationDetailsViewController.h */,
 				4B0B3B741B0E351800B2C26D /* LocationDetailsViewController.m */,
+				4BDA1AA61B14C2370030982E /* CategoryPickerViewController.h */,
+				4BDA1AA71B14C2370030982E /* CategoryPickerViewController.m */,
 				4BC2BDB51B08FB5300512C26 /* SecondViewController.h */,
 				4BC2BDB61B08FB5300512C26 /* SecondViewController.m */,
 				4BC2BDB81B08FB5300512C26 /* Main.storyboard */,
@@ -237,6 +242,7 @@
 				4BC2BDB11B08FB5300512C26 /* AppDelegate.m in Sources */,
 				4BC2BDB41B08FB5300512C26 /* CurrentLocationViewController.m in Sources */,
 				4BC2BDAE1B08FB5300512C26 /* main.m in Sources */,
+				4BDA1AA81B14C2370030982E /* CategoryPickerViewController.m in Sources */,
 				4B0B3B751B0E351800B2C26D /* LocationDetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
