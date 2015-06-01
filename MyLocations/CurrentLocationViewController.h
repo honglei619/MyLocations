@@ -18,6 +18,7 @@
 @property(nonatomic,weak)IBOutlet UILabel *adderessLabel;
 @property (nonatomic,weak) IBOutlet UIButton *tagButton;
 @property(nonatomic,weak)IBOutlet UIButton *getButton;
+@property(nonatomic,strong) NSManagedObjectContext *managedObjectContext;
 -(IBAction)getLocaton:(id)sender;
 @end
 

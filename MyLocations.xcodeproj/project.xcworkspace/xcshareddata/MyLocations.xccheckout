@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>396080D2-C0C1-4FC6-9E03-AE82BA572629</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>MyLocations</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>4D7027DCE05844DEE5F25C0988EAFF09330B9E7B</key>
 		<string>https://github.com/honglei619/MyLocations.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>MyLocations.xcodeproj/project.xcworkspace</string>
+	<string>MyLocations.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>4D7027DCE05844DEE5F25C0988EAFF09330B9E7B</key>
