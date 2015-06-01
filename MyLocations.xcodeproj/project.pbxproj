@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4B0B3B751B0E351800B2C26D /* LocationDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0B3B741B0E351800B2C26D /* LocationDetailsViewController.m */; };
+		4B7C265F1B1B6A3B00080490 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B7C265E1B1B6A3B00080490 /* CoreData.framework */; };
+		4B7C26621B1B6A5900080490 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B7C26601B1B6A5900080490 /* DataModel.xcdatamodeld */; };
+		4B7C26651B1B6C0100080490 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B7C26641B1B6C0100080490 /* Location.m */; };
 		4BC2BDAE1B08FB5300512C26 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC2BDAD1B08FB5300512C26 /* main.m */; };
 		4BC2BDB11B08FB5300512C26 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC2BDB01B08FB5300512C26 /* AppDelegate.m */; };
 		4BC2BDB41B08FB5300512C26 /* CurrentLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC2BDB31B08FB5300512C26 /* CurrentLocationViewController.m */; };
@@ -34,6 +37,10 @@
 /* Begin PBXFileReference section */
 		4B0B3B731B0E351800B2C26D /* LocationDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDetailsViewController.h; sourceTree = "<group>"; };
 		4B0B3B741B0E351800B2C26D /* LocationDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDetailsViewController.m; sourceTree = "<group>"; };
+		4B7C265E1B1B6A3B00080490 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		4B7C26611B1B6A5900080490 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		4B7C26631B1B6C0100080490 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		4B7C26641B1B6C0100080490 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		4BC2BDA81B08FB5300512C26 /* MyLocations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyLocations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BC2BDAC1B08FB5300512C26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BC2BDAD1B08FB5300512C26 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -61,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B7C265F1B1B6A3B00080490 /* CoreData.framework in Frameworks */,
 				4BC2BDD51B09071600512C26 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -78,6 +86,8 @@
 		4BC2BD9F1B08FB5300512C26 = {
 			isa = PBXGroup;
 			children = (
+				4B7C26601B1B6A5900080490 /* DataModel.xcdatamodeld */,
+				4B7C265E1B1B6A3B00080490 /* CoreData.framework */,
 				4BC2BDD41B09071600512C26 /* CoreLocation.framework */,
 				4BC2BDAA1B08FB5300512C26 /* MyLocations */,
 				4BC2BDC71B08FB5300512C26 /* MyLocationsTests */,
@@ -108,6 +118,8 @@
 				4BDA1AA91B1616830030982E /* HudView.h */,
 				4BDA1AAA1B1616830030982E /* HudView.m */,
 				4BC2BDB51B08FB5300512C26 /* SecondViewController.h */,
+				4B7C26631B1B6C0100080490 /* Location.h */,
+				4B7C26641B1B6C0100080490 /* Location.m */,
 				4BC2BDB61B08FB5300512C26 /* SecondViewController.m */,
 				4BC2BDB81B08FB5300512C26 /* Main.storyboard */,
 				4BC2BDBB1B08FB5300512C26 /* Images.xcassets */,
@@ -244,8 +256,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BC2BDB71B08FB5300512C26 /* SecondViewController.m in Sources */,
+				4B7C26621B1B6A5900080490 /* DataModel.xcdatamodeld in Sources */,
 				4BC2BDB11B08FB5300512C26 /* AppDelegate.m in Sources */,
 				4BC2BDB41B08FB5300512C26 /* CurrentLocationViewController.m in Sources */,
+				4B7C26651B1B6C0100080490 /* Location.m in Sources */,
 				4BC2BDAE1B08FB5300512C26 /* main.m in Sources */,
 				4BDA1AAB1B1616830030982E /* HudView.m in Sources */,
 				4BDA1AA81B14C2370030982E /* CategoryPickerViewController.m in Sources */,
@@ -327,7 +341,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -364,7 +378,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -460,6 +474,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4B7C26601B1B6A5900080490 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4B7C26611B1B6A5900080490 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 4B7C26611B1B6A5900080490 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4BC2BDA01B08FB5300512C26 /* Project object */;
 }
